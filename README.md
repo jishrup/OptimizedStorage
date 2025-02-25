@@ -1,2 +1,2 @@
 # OptimizedStorage
-fficient, Cache-Conscious, Low-Latency, Parallel Storage System in C++
+Efficient, Cache-Conscious, Low-Latency, Parallel Storage System in C++
