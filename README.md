@@ -2,7 +2,7 @@ Multithreaded Optimized Storage Framework
 Efficient, Cache-Conscious, Low-Latency, Parallel Storage System in C++
 
 Overview
-This project aims to build a high-performance multithreaded storage framework that efficiently processes and stores continuous streams of data. The focus is on cache-conscious design, low-latency operations, and parallel execution across multiple CPU cores.
+This project aims to build a high-performance multithreaded storage framework that efficiently processes and stores continuous streams of data. The focus is on cache-conscious design, low-latency operations, and parallel execution across multiple CPU cores(NUMA aware).
 
 Designed for modern multi-core architectures, this framework optimizes data placement, access patterns, and threading strategies to achieve maximum throughput and minimal contention.
 
