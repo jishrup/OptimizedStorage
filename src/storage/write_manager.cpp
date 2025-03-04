@@ -1,4 +1,4 @@
-#include "write.hpp"
+#include "write_manager.hpp"
 
 /** 
  * Constructor: The constructor for the WriteHandler, 
@@ -22,13 +22,13 @@ WriteHandler :: ~WriteHandler() {
 /**
  * This function adds the buffer into the write queue, wakes up the writes threads if they are sleeping.
  * 
- * @param buffer  The buffer block which needs to be written
+ * @param req     The request object which contain the request information including the buffer
  * @param offset  Offset which tells the offset of the block to be read
  * 
  *  
  * @return bool    Returns true if the write was succeful else false.
  */
-bool WriteHandler :: AddBufferIntoQueue(char * buffer, size_t offset) {
+bool WriteHandler :: AddBufferIntoQueue(shared_ptr<Request> req, size_t offset) {
     return false;
 }
 
@@ -49,9 +49,9 @@ bool WriteHandler :: IsOffsetInQueue(size_t offset) {
  * 
  * @param offset  Offset to check if its waiting in the write queue
  *  
- * @return char *  Returns the buffer for the offset
+ * @return shared_ptr<Request> req  Returns the buffer for the offset
  */
-char * WriteHandler :: BufferFromOffset(size_t offset) {
+shared_ptr<Request> WriteHandler :: BufferFromOffset(size_t offset) {
     return NULL;
 }
 

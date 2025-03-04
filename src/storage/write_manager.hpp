@@ -1,4 +1,5 @@
-#include "files.hpp"
+#include "read_write.hpp"
+#include "../communication/general.hpp"
 #include <thread>
 
 using namespace std;
@@ -14,21 +15,21 @@ class WriteHandler {
         ~WriteHandler();
 
         // Function to add the a write buffer into the queue
-        bool AddBufferIntoQueue(char * buffer, size_t offset);
+        bool AddBufferIntoQueue(shared_ptr<Request> req, size_t offset);
 
         // Function to check if the offset is there in the queue
         bool IsOffsetInQueue(size_t offset);
 
         // Function return the buffer for the given offset
-        char * BufferFromOffset(size_t offset);
+        shared_ptr<Request> BufferFromOffset(size_t offset);
 
     private:
         // The function which handles the writes, the thread runs on these function
         void WriterFunction(int threadId);
 
 
-        vector<thread> threads;                          // vector of threads to handle write
-        vector<unique_ptr<FileWriteLockFree>> filobj;    // vector of Lock Free file object to handle write for each write threads
-        unordered_map<size_t, char *> writmap;           // map to hold the pending write task
-        deque<size_t> writequeue;                        // queue to manage the write operations
+        vector<thread> threads;                               // vector of threads to handle write
+        vector<unique_ptr<FileWriteLockFree>> filobj;         // vector of Lock Free file object to handle write for each write threads
+        unordered_map<size_t, shared_ptr<Request>> writmap;   // map to hold the pending write task
+        deque<size_t> writequeue;                             // queue to manage the write operations
 };
