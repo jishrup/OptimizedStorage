@@ -18,12 +18,12 @@ struct Request {
         req_type = REQ_DEFAULT;
         data = NULL;
     }
-    
+
     Request(size_t id, ReqType type, const char* input_data) 
         : req_id(id), req_type(type) {
         
         // Allocate memory for data and copy input string
-        data = new char[strlen(input_data) + 1];
+        data = new char[strlen(input_data)];
         strcpy(data, input_data);
     }
 
